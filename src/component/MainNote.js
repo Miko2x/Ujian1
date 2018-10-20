@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {View,Text,TextInput,ScrollView, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native';
 
 import Note from './Note';
 
 const background = require('../assets/chatBubble.jpg')
-
-export default class MainNote extends Component{
+class MainNote extends React.Component {
     state = {
         noteArray: [],
         text: ''
@@ -16,7 +15,9 @@ export default class MainNote extends Component{
         if(this.state.noteArray){
             var today = new Date();
             this.state.noteArray.push({
-                'date': today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear(),
+                'date': today.getDate() + 
+                '-' + (today.getMonth() + 1) + 
+                '-' + today.getFullYear(),
                 'note': this.state.text
             })
             this.setState({noteArray: this.state.noteArray})
@@ -50,8 +51,8 @@ export default class MainNote extends Component{
                     <TextInput
                         onChangeText = {text => this.setState({text})}
                         value = {this.state.text}
-                        placeholder = 'Write your plans here..'
-                        placeholderTextColor = 'grey'
+                        placeholder = 'Type what you want to do..'
+                        placeholderTextColor = 'whitesmoke'
                         multiline = {true}
                         style = {styles.textInput}
                     />
@@ -123,3 +124,6 @@ const styles = StyleSheet.create({
         flex:1
     }
 })
+
+
+export default MainNote
